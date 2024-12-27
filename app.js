@@ -8,7 +8,7 @@ const index = require('./routes/index');
 const app = express();
 app.use(express.json());
 const PORT_FE = process.env.PORT_FE;
-app.use(cors({ origin: `http://localhost:${PORT_FE}` }));
+app.use(cors({ origin: `${PORT_FE}` }));
 app.use(morgan('dev'));
 // Middleware
 
