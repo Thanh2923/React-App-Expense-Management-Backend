@@ -5,7 +5,8 @@ const authController = {
         const {userName, email, password } = req.body;
         
         try {
-          const newUser = await authService.register(userName,email, password);
+          const finalPassword = password || ''; 
+          const newUser = await authService.register(userName,email, finalPassword);
           res.status(200).json({ message: 'Đăng ký thành công', user: newUser });
         } catch (error) {
           res.status(400).json({ error: error.message });
