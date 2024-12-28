@@ -6,13 +6,6 @@ const categoryController = {
   createCategory: async (req, res) => {
     try {
       const { name, email } = req.body;
-
-      // Kiểm tra xem email có tồn tại trong bảng User không
-      const user = await authService.isEmailUser(email)
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
-
       const category = await categoryService.createCategory(name,email)
 
       res.status(201).json({ message: "Category created successfully", category });
@@ -25,11 +18,6 @@ const categoryController = {
   getAllCategoryByEmail: async (req, res) => {
     try {
       const { email="thanhnv29203@gmail.com" } = req.query;
-      console.log(email)
-      const user = await authService.isEmailUser(email)
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
       const categories = await categoryService.getAllCategoryByEmail(email) 
       res.status(200).json(categories);
     } catch (error) {

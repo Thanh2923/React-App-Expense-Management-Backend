@@ -7,11 +7,6 @@ const expenseTrackingService = require('../services/expenseTrackingService');
         // Lấy email, page, và limit từ query params, với giá trị mặc định
         const { email = "thanhnv29203@gmail.com", page, limit } = req.query;
     
-        // Kiểm tra nếu không có email
-        if (!email) {
-          return res.status(400).json({ message: "Email is required" });
-        }
-    
         // Chuyển đổi page và limit sang số nguyên nếu chúng tồn tại
         const pageNumber = page ? parseInt(page, 10) : undefined;
         const limitNumber = limit ? parseInt(limit, 10) : undefined;
